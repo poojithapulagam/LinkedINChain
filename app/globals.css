@@ -1,0 +1,53 @@
+/* Import Solana Wallet Adapter styles */
+@import '@solana/wallet-adapter-react-ui/styles.css';
+
+/* Import Tailwind CSS styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply global styles to the body */
+body {
+  @apply h-screen overflow-hidden bg-neutral-50 font-sans text-neutral-950;
+}
+
+/**
+ * Solana Wallet Adapter.
+ */
+
+/* Customize styles for the wallet adapter button */
+.wallet-adapter-button {
+  @apply
+    font-sans-alt
+    h-12
+    cursor-pointer
+    rounded-none
+    border-none
+    bg-neutral-950
+    px-8
+    font-semibold
+    leading-none
+    tracking-wide
+    text-neutral-50;
+
+  /* Add additional styles or override existing ones */
+  /* For example, you can add a hover effect */
+  &:hover {
+    @apply bg-neutral-800;
+  }
+}
+
+
+.btn-twitter {
+  padding: 8px 16px;
+  background-color: #1da1f2; /* Twitter Blue */
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-twitter:hover {
+  background-color: #007bb5; /* Darker shade for hover effect */
+}
