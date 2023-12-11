@@ -1,8 +1,9 @@
+// Add the "use client" comment at the top to mark it as a client entry
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import type { PublicKey } from '@solana/web3.js';
 import { notFound } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 import useWorkspace from '@/hooks/use-workspace';
 import type { Post } from '@/lib/models';
@@ -10,8 +11,6 @@ import type { Workspace } from '@/lib/web3';
 import { getPost } from '@/lib/web3';
 import PostCard from './post-card';
 import PostHeader from './post-header';
-
-// Import necessary modules and components
 
 export interface PostDetailProps {
   publicKey: PublicKey;
@@ -40,15 +39,15 @@ export default function PostDetail({ publicKey }: PostDetailProps) {
 
   if (!post) {
     notFound();
+    return null; // Make sure to return null here to avoid rendering the rest of the component without post data.
   }
 
   return (
-    <>
+    <div className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
       <PostHeader />
-      <div className="bg-gray-100 p-4">
-        {/* Added background color and padding for better visual separation */}
+      <div className="bg-white rounded-md shadow-md p-4 mt-4">
         <PostCard post={post} />
       </div>
-    </>
+    </div>
   );
 }

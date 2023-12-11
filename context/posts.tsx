@@ -1,3 +1,4 @@
+// Add the "use client" comment at the top to mark it as a client entry
 'use client';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -11,11 +12,13 @@ import { fetchPosts, sendPost } from '@/lib/web3';
 export interface PostsContextValue {
   posts: Post[];
   sendPost: (content: string) => Promise<void>;
+  loading: boolean;
 }
 
 const defaultValue: PostsContextValue = {
   posts: [],
   sendPost: async () => {},
+  loading: true,
 };
 
 const PostsContext = React.createContext<PostsContextValue>(defaultValue);
@@ -26,17 +29,24 @@ export interface PostsProviderProps {
 
 export function PostsProvider({ children }: PostsProviderProps) {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const workspace = useWorkspace();
 
   // Update posts on workspace changes.
   useEffect(() => {
     const updatePosts = async (workspace: Workspace) => {
-      const fetchedPosts = await fetchPosts(workspace);
-      const sortedPosts = fetchedPosts.sort(
-        (a, b) => b.timestamp - a.timestamp,
-      );
-      setPosts(sortedPosts);
+      try {
+        const fetchedPosts = await fetchPosts(workspace);
+        const sortedPosts = fetchedPosts.sort(
+          (a, b) => b.timestamp - a.timestamp,
+        );
+        setPosts(sortedPosts);
+      } catch (error) {
+        console.error('Loading fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     if (workspace) {
@@ -46,19 +56,24 @@ export function PostsProvider({ children }: PostsProviderProps) {
 
   const sendPostAndUpdate = useCallback(
     async (content: string) => {
-      invariant(workspace, 'Expected workspace to be defined');
-      const newPost = await sendPost(workspace, content);
-      setPosts([newPost, ...posts]);
+      try {
+        invariant(workspace, 'Expected workspace to be defined');
+        const newPost = await sendPost(workspace, content);
+        setPosts((prevPosts) => [newPost, ...prevPosts]);
+      } catch (error) {
+        console.error('Loading sending post:', error);
+      }
     },
-    [workspace, posts],
+    [workspace],
   );
 
   const value = useMemo(
     () => ({
       posts,
       sendPost: sendPostAndUpdate,
+      loading,
     }),
-    [posts, sendPostAndUpdate],
+    [posts, sendPostAndUpdate, loading],
   );
 
   return (

@@ -7,11 +7,11 @@ import Header from '@/components/header';
 import { firaMono, poppins, sourceSans } from './fonts';
 
 export const metadata: Metadata = {
-  title: 'Solana X',
-  description: 'X clone built on Solana',
+  title: 'AMIGOS ODYSSEY SPACE',
+  description: '🌌 Welcome to AO SPACE: The dynamic social frontier of Amigos Odyssey! 🚀 Immerse yourself in a decentralized haven on Solana blockchain devnet, fostering vibrant community engagement with a nominal Sol fee per message. Explore our beta version, a Twitter-style clone, and earn exclusive Discord roles and VIP access to NFT drops by actively participating in AO CLICK. Join the evolving world of Amigos Odyssey, where conversations ignite and innovation meets blockchain for an unparalleled social experience! 🌈💬',
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
@@ -20,12 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          'bg-gray-100', // Set background color
+          'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500', // Set gradient background
           firaMono.variable,
           poppins.variable,
           sourceSans.variable,
           'font-sans',
-          'text-neutral-900', // Set text color
+          'text-white', // Set text color to white
         )}
       >
         <AppContext>

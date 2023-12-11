@@ -1,7 +1,9 @@
-// Import necessary modules and components
+// Add the "use client" comment at the top to mark it as a client entry
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import type { PublicKey } from '@solana/web3.js';
 import { notFound } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 import useWorkspace from '@/hooks/use-workspace';
 import type { Post, Profile } from '@/lib/models';
@@ -17,7 +19,6 @@ export interface ProfileDetailProps {
 export default function ProfileDetail({ publicKey }: ProfileDetailProps) {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
-
   const [loaded, setLoaded] = useState(false);
 
   const workspace = useWorkspace();
@@ -48,15 +49,16 @@ export default function ProfileDetail({ publicKey }: ProfileDetailProps) {
 
   if (!profile) {
     notFound();
+    return null; // Make sure to return null here to avoid rendering the rest of the component without profile data.
   }
 
   return (
-    <>
-      <div className="bg-gray-100 p-4">
-        {/* Added background color and padding for better visual separation */}
+    <div className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+      {/* Added a responsive container */}
+      <div className="bg-white rounded-md shadow-md p-4 mt-4">
         <ProfileHeader profile={profile} />
         <PostList posts={posts} />
       </div>
-    </>
+    </div>
   );
 }

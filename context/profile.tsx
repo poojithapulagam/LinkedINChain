@@ -1,9 +1,10 @@
+// Add the "use client" comment at the top to mark it as a client entry
 'use client';
 
-import { useWallet } from '@solana/wallet-adapter-react';
-import type { PublicKey } from '@solana/web3.js';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import invariant from 'tiny-invariant';
+import { useWallet } from '@solana/wallet-adapter-react';
+import type { PublicKey } from '@solana/web3.js';
 
 import useWorkspace from '@/hooks/use-workspace';
 import type { Profile } from '@/lib/models';
@@ -30,20 +31,24 @@ export interface ProfileProviderProps {
 
 export function ProfileProvider({ children }: ProfileProviderProps) {
   const [loaded, setLoaded] = useState(false);
-
   const [profile, setProfile] = useState<Profile | null>(null);
 
   const workspace = useWorkspace();
+  const wallet = useWallet();
 
   // Update profile on workspace changes.
-  const wallet = useWallet();
   useEffect(() => {
     const updateProfile = async (
       workspace: Workspace,
       ownerPublicKey: PublicKey,
     ) => {
-      setProfile(await getProfile(workspace!, ownerPublicKey));
-      setLoaded(true);
+      try {
+        setProfile(await getProfile(workspace!, ownerPublicKey));
+      } catch (error) {
+        console.error('Loading fetching profile:', error);
+      } finally {
+        setLoaded(true);
+      }
     };
 
     const clearProfile = () => {
@@ -60,9 +65,13 @@ export function ProfileProvider({ children }: ProfileProviderProps) {
 
   const createProfileAndUpdate = useCallback(
     async (name: string) => {
-      invariant(workspace, 'Expected workspace to be defined');
-      const newProfile = await createProfile(workspace, name);
-      setProfile(newProfile);
+      try {
+        invariant(workspace, 'Expected workspace to be defined');
+        const newProfile = await createProfile(workspace, name);
+        setProfile(newProfile);
+      } catch (error) {
+        console.error('Loading creating profile:', error);
+      }
     },
     [workspace],
   );
