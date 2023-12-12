@@ -30,19 +30,19 @@ const Header: React.FC = () => {
       {/* Buttons - Responsive Hamburger Menu */}
       <div className={`sm:hidden ${menuOpen ? 'flex flex-col' : 'hidden'}`}>
         <a
-          href="https://twitter.com"
+          href="https://amigos-odyssey-click.vercel.app/"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 my-2"
         >
           AO Click
         </a>
         <a
-          href="https://twitter.com"
+          href="https://discord.com/invite/xjVx6AekJs"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 my-2"
         >
           Discord
         </a>
         <a
-          href="https://twitter.com"
+          href="https://twitter.com/amigosodyssey"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 my-2"
         >
           Twitter
@@ -52,25 +52,25 @@ const Header: React.FC = () => {
       {/* Buttons - Desktop */}
       <div className="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
         <a
-          href="https://twitter.com"
+          href="https://twitter.com/amigosodyssey"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           Guide
         </a>
         <a
-          href="https://twitter.com"
+          href="https://amigos-odyssey-click.vercel.app/"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           AO Click
         </a>
         <a
-          href="https://twitter.com"
+          href="https://discord.com/invite/xjVx6AekJs"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           Discord
         </a>
         <a
-          href="https://twitter.com"
+          href="https://twitter.com/amigosodyssey"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           Twitter
