@@ -31,18 +31,21 @@ const Header: React.FC = () => {
       <div className={`sm:hidden ${menuOpen ? 'flex flex-col' : 'hidden'}`}>
         <a
           href="https://amigos-odyssey-click.vercel.app/"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 my-2"
         >
           AO Click
         </a>
         <a
           href="https://discord.com/invite/xjVx6AekJs"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 my-2"
         >
           Discord
         </a>
         <a
           href="https://twitter.com/amigosodyssey"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 my-2"
         >
           Twitter
@@ -53,24 +56,28 @@ const Header: React.FC = () => {
       <div className="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
         <a
           href="https://twitter.com/amigosodyssey"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           Guide
         </a>
         <a
           href="https://amigos-odyssey-click.vercel.app/"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           AO Click
         </a>
         <a
           href="https://discord.com/invite/xjVx6AekJs"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           Discord
         </a>
         <a
           href="https://twitter.com/amigosodyssey"
+          target="_blank"
           className="btn-twitter text-black font-bold hover:text-black hover:bg-blue-600 transform transition-transform duration-300"
         >
           Twitter
