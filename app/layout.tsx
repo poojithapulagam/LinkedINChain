@@ -7,8 +7,8 @@ import Header from '@/components/header';
 import { firaMono, poppins, sourceSans } from './fonts';
 
 export const metadata: Metadata = {
-  title: 'Solana X',
-  description: 'X clone built on Solana',
+  title: 'AMIGOS ODYSSEY SPACE',
+  description: '🚀 Welcome to AO SPACE, the innovative social platform within the Amigos Odyssey ecosystem! Built on Solana blockchain devnet, AO SPACE integrates seamlessly with our flagship game, AO CLICK. Enjoy decentralized and secure interactions with a nominal Sol fee per message. Access SOL tokens effortlessly through SOL FAUCET and experience a Twitter-style community interface. Be part of the beta version, provide feedback, and connect with AO CLICK using the same wallet. Earn VIP roles for exclusive access to NFT drops by engaging in AO SPACE and sharing AO CLICK progress. Join us for an unparalleled social experience where community, innovation, and blockchain converge! 🌌💬',
 };
 
 export default function RootLayout({
