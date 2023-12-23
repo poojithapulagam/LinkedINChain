@@ -20,16 +20,19 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500', // Set gradient background
+          'bg-gradient-to-r from-green-400 via-purple-500 to-pink-500', // Set gradient background
           firaMono.variable,
           poppins.variable,
           sourceSans.variable,
           'font-sans',
           'text-white', // Set text color to white
+          'bg-cover', // Make the background image cover the entire container
+          'min-h-screen', // Ensure the body takes at least the full height of the viewport
         )}
+        style={{ backgroundImage: 'url("/7.png")' }} // Set background image
       >
         <AppContext>
-          <div className="flex h-full flex-col">
+          <div className="flex flex-col h-full">
             <Header />
             <div className="flex-1 overflow-y-auto">
               <main className="mx-auto flex w-full max-w-[480px] flex-col pt-8">
