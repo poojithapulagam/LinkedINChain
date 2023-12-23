@@ -29,7 +29,10 @@ export default function RootLayout({
           'bg-cover', // Make the background image cover the entire container
           'min-h-screen', // Ensure the body takes at least the full height of the viewport
         )}
-        style={{ backgroundImage: 'url("/7.png")' }} // Set background image
+        style={{
+          backgroundImage: 'url("/7.png")',
+          opacity: '0.9', // Adjust the opacity as needed (0.0 to 1.0)
+        }} // Set background image and opacity
       >
         <AppContext>
           <div className="flex flex-col h-full">
