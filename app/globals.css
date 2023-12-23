@@ -40,7 +40,7 @@ body {
 
 .btn-twitter {
   padding: 8px 16px;
-  background-color: #1da1f2; /* Twitter Blue */
+  background-color: #57d552; /* Twitter Blue */
   border: none;
   border-radius: 4px;
   font-size: 14px;
@@ -49,5 +49,5 @@ body {
 }
 
 .btn-twitter:hover {
-  background-color: #007bb5; /* Darker shade for hover effect */
+  background-color: #57d552; /* Darker shade for hover effect */
 }
