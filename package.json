@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "some-package": "github:user/repo#commit-hash",
     "@coral-xyz/anchor": "^0.29.0",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.34",
