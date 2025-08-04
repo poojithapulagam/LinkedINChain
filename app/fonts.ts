@@ -1,23 +1,17 @@
-import { Fira_Mono, Poppins, Source_Sans_3 } from 'next/font/google';
+import { Lexend_Deca, DM_Sans } from 'next/font/google';
 
-export const firaMono = Fira_Mono({
-  weight: ['400', '500'],
+export const lexendDeca = Lexend_Deca({
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-fira-mono',
+  variable: '--font-lexend-deca',
 });
 
-export const poppins = Poppins({
-  weight: ['600'],
+export const dmSans = DM_Sans({
+  weight: ['400', '500', '600', '700'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-poppins',
-});
-
-export const sourceSans = Source_Sans_3({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-source-sans',
+  variable: '--font-dm-sans',
 });

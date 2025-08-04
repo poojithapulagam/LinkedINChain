@@ -13,7 +13,10 @@ interface MaybeLinkProps {
 export default function MaybeLink({ href, children, className }: MaybeLinkProps) {
   if (href) {
     return (
-      <a href={href} className={`text-blue-500 hover:underline ${className}`}>
+      <a 
+        href={href} 
+        className={`text-black hover:text-gray-600 transition-colors duration-200 ${className || ''}`}
+      >
         {children}
       </a>
     );

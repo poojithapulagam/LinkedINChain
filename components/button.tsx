@@ -1,14 +1,21 @@
 // Button.tsx
 import React, { ButtonHTMLAttributes } from 'react';
+import clsx from 'clsx';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   // Add any additional props if needed
 }
 
-const Button: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ children, className, disabled, ...rest }) => {
   return (
     <button
-      className={`bg-gradient-to-r from-blue-500 to-purple-500 hover:from-pink-500 hover:to-yellow-500 text-white px-4 py-2 rounded-md focus:outline-none transition-transform transform hover:scale-105 ${className}`}
+      className={clsx(
+        'font-dm-sans font-medium px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2',
+        'bg-black text-white hover:bg-gray-800 active:bg-gray-900',
+        'disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed disabled:hover:bg-gray-300',
+        className
+      )}
+      disabled={disabled}
       {...rest}
     >
       {children}

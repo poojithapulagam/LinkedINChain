@@ -17,18 +17,23 @@ export default function AuthorPage({ params }: AuthorPageProps) {
     const publicKey = new PublicKey(params.publicKey);
 
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-200 via-blue-300 to-blue-400">
-        {/* Adjust the background gradient and other styles based on your design */}
-        <ProfileDetail publicKey={publicKey} />
+      <div className="w-full bg-white">
+        <div className="container-responsive py-8">
+          <ProfileDetail publicKey={publicKey} />
+        </div>
       </div>
     );
   } catch (error) {
     // Handle errors, e.g., redirect to an error page or display an error message
     console.error('Error processing public key:', error);
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-200 via-red-300 to-red-400">
-        {/* Adjust the background gradient and other styles based on your design */}
-        <p className="text-white"> loading author page</p>
+      <div className="w-full bg-white">
+        <div className="container-responsive py-8">
+          <div className="card text-center py-12">
+            <h2 className="text-xl font-lexend font-semibold text-black mb-4">Error Loading Author</h2>
+            <p className="text-gray-600 font-dm-sans">Unable to load the requested author profile. Please try again.</p>
+          </div>
+        </div>
       </div>
     );
   }

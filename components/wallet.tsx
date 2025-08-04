@@ -21,13 +21,13 @@ export default function Wallet() {
 
   return (
     <MaybeLink href="/profile">
-      <div className="flex items-center">
-        <ProfilePicture className="h-12 w-12 rounded-full" publicKey={publicKey!} />
-        <div className="ml-4 flex flex-col">
-          <p className="mx-0 mb-1 mt-0 text-lg font-semibold leading-tight text-gray-800">
+      <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <ProfilePicture className="h-10 w-10 rounded-full" publicKey={publicKey!} />
+        <div className="flex flex-col">
+          <p className="text-sm font-lexend font-semibold text-black leading-tight">
             {name}
           </p>
-          <p className="m-0 font-mono text-sm leading-4 text-gray-500">
+          <p className="text-xs font-dm-sans text-gray-500 leading-tight">
             {condensePublicKey(publicKey!.toBase58())}
           </p>
         </div>

@@ -6,10 +6,7 @@ import usePosts from '@/hooks/use-posts';
 import Button from './button';
 import TextField from './text-field';
 
-
 const characterLimit = 280;
-
-// Import necessary modules and components
 
 export default function PostForm() {
   const [content, setContent] = useState('');
@@ -25,18 +22,29 @@ export default function PostForm() {
   };
 
   return (
-    <form className="flex items-center bg-gray-100 p-4 rounded-md" onSubmit={handleSubmit}>
-      {/* Added background color, padding, and rounded corners for better visual appeal */}
-      <TextField
-        className="flex-1 mr-2"
-        onChange={(event) => setContent(event.target.value)}
-        maxLength={characterLimit}
-        placeholder="What's happening?"
-        value={content}
-      />
-      <Button type="submit" className="bg-blue-500 text-white hover:bg-blue-600">
-        Post
-      </Button>
-    </form>
+    <div className="card card-hover">
+      <h3 className="text-lg font-lexend font-semibold mb-4 text-black">Create a Post</h3>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <TextField
+          className="w-full"
+          onChange={(event) => setContent(event.target.value)}
+          maxLength={characterLimit}
+          placeholder="What's happening in the ChatChain?"
+          value={content}
+        />
+        <div className="flex justify-between items-center">
+          <span className="text-sm font-dm-sans text-gray-500">
+            {content.length}/{characterLimit} characters
+          </span>
+          <Button 
+            type="submit" 
+            className="bg-black text-white hover:bg-gray-800 font-dm-sans font-medium px-6 py-2 rounded-lg transition-colors duration-200"
+            disabled={!content.trim()}
+          >
+            Post
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }

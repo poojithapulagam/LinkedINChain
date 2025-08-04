@@ -8,9 +8,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['var(--font-fira-mono)', 'monospace'],
-        sans: ['var(--font-source-sans)', 'sans-serif'],
-        'sans-alt': ['var(--font-poppins)', 'sans-serif'],
+        'lexend': ['var(--font-lexend-deca)', 'sans-serif'],
+        'dm-sans': ['var(--font-dm-sans)', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'sans-serif'],
       },
     },
   },

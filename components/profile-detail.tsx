@@ -6,11 +6,12 @@ import type { PublicKey } from '@solana/web3.js';
 import { notFound } from 'next/navigation';
 
 import useWorkspace from '@/hooks/use-workspace';
-import type { Post, Profile } from '@/lib/models';
-import { authorFilter, fetchPosts, getProfile } from '@/lib/web3';
-import type { Workspace } from '@/lib/web3';
+import type { Profile } from '@/lib/models';
+import { getProfile } from '@/lib/web3';
+import useProfilePosts from '@/hooks/use-profile-posts';
 import ProfileHeader from './profile-header';
 import PostList from './post-list';
+import PullToRefresh from './pull-to-refresh';
 
 export interface ProfileDetailProps {
   publicKey: PublicKey;
@@ -18,33 +19,46 @@ export interface ProfileDetailProps {
 
 export default function ProfileDetail({ publicKey }: ProfileDetailProps) {
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [posts, setPosts] = useState<Post[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   const workspace = useWorkspace();
+  
+  // Use the new profile posts hook with infinite scroll
+  const { 
+    posts, 
+    loading: postsLoading, 
+    loadingMore, 
+    hasMore, 
+    loadingRef,
+    refreshPosts
+  } = useProfilePosts(publicKey, {
+    enableInfiniteScroll: true,
+    limit: 10
+  });
+
   useEffect(() => {
-    const updateProfile = async (workspace: Workspace) => {
+    const updateProfile = async (workspace: any) => {
       const fetchedProfile = await getProfile(workspace, publicKey);
       setProfile(fetchedProfile);
-    };
-
-    const updatePosts = async (workspace: Workspace) => {
-      const fetchedPosts = await fetchPosts(workspace, [
-        authorFilter(publicKey),
-      ]);
-      setPosts(fetchedPosts);
+      setLoaded(true);
     };
 
     if (workspace && publicKey) {
-      Promise.all([updateProfile(workspace), updatePosts(workspace)]).then(() =>
-        setLoaded(true),
-      );
+      updateProfile(workspace);
     }
   }, [workspace, publicKey]);
 
+  const handleRefresh = async () => {
+    await refreshPosts();
+  };
+
   if (!loaded) {
-    // TODO: Render spinner.
-    return null;
+    return (
+      <div className="card text-center py-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black mx-auto mb-4"></div>
+        <p className="text-gray-600 font-dm-sans">Loading profile...</p>
+      </div>
+    );
   }
 
   if (!profile) {
@@ -53,12 +67,21 @@ export default function ProfileDetail({ publicKey }: ProfileDetailProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-      {/* Added a responsive container */}
-      <div className="bg-white rounded-md shadow-md p-4 mt-4">
+    <div className="space-y-8">
+      <div className="card card-hover">
         <ProfileHeader profile={profile} />
-        <PostList posts={posts} />
       </div>
+      <PullToRefresh onRefresh={handleRefresh}>
+        <PostList 
+          posts={posts} 
+          loading={postsLoading}
+          loadingMore={loadingMore}
+          hasMore={hasMore}
+          loadingRef={loadingRef}
+          showTitle={true}
+          emptyMessage={`${profile.name} hasn't posted anything yet.`}
+        />
+      </PullToRefresh>
     </div>
   );
 }

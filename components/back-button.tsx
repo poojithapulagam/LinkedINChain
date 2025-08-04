@@ -5,12 +5,13 @@ export default function BackButton() {
 
   return (
     <button
-      className="group h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 cursor-pointer bg-gradient-to-r from-blue-500 to-purple-500 hover:from-pink-500 hover:to-yellow-500 border-none p-0 focus:outline-none transform transition-transform hover:-translate-x-1 hover:scale-105 rounded-md shadow-md"
+      className="group h-10 w-10 sm:h-12 sm:w-12 cursor-pointer bg-black hover:bg-gray-800 border-2 border-black hover:border-gray-800 p-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition-all duration-200 hover:-translate-x-1 rounded-lg shadow-sm"
       onClick={() => router.back()}
       type="button"
+      aria-label="Go back"
     >
-      <span className="relative -top-1 inline-block text-3xl sm:text-4xl lg:text-5xl leading-none">
-        ⟵
+      <span className="relative -top-1 inline-block text-2xl sm:text-3xl leading-none text-white">
+        ←
       </span>
     </button>
   );

@@ -8,7 +8,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 const ConnectButton: React.FC = () => {
   return (
     <WalletMultiButton
-      className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-500 hover:to-purple-500 text-white px-4 py-2 rounded-md focus:outline-none transition-transform transform hover:scale-105"
+      className="font-dm-sans font-medium px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 bg-black text-white hover:bg-gray-800 active:bg-gray-900"
     />
   );
 };

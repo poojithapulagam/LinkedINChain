@@ -25,23 +25,29 @@ export default function PostCard({ post }: PostCardProps) {
   const postLink = `/posts/${id}`;
 
   return (
-    <article className="flex flex-col sm:flex-row p-4 bg-white shadow-md rounded-md mb-4">
-      <ProfilePicture publicKey={author.owner} className="mb-4 sm:mr-4 sm:mb-0" />
-      <div className="flex flex-col w-full">
-        <header className="mb-2">
-          <h1 className="m-0 text-xl font-semibold text-blue-600">
-            <MaybeLink href={authorLink}>{author.name}</MaybeLink>
-          </h1>
-          <p className="text-sm text-neutral-500">
+    <article className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+      <div className="flex-shrink-0">
+        <ProfilePicture publicKey={author.owner} className="w-12 h-12 sm:w-16 sm:h-16" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <header className="mb-3">
+          <h3 className="text-lg font-lexend font-semibold text-black mb-1">
+            <MaybeLink href={authorLink} className="hover:text-gray-600 transition-colors duration-200">
+              {author.name}
+            </MaybeLink>
+          </h3>
+          <p className="text-sm font-dm-sans text-gray-500">
             {condensePublicKey(author.owner.toBase58())} •{' '}
-            <MaybeLink href={postLink}>
+            <MaybeLink href={postLink} className="hover:text-gray-700 transition-colors duration-200">
               <time dateTime={new Date(timestamp).toISOString()}>
                 {createdAt}
               </time>
             </MaybeLink>
           </p>
         </header>
-        <p className="text-gray-800">{content}</p>
+        <div className="prose prose-sm max-w-none">
+          <p className="text-black font-dm-sans leading-relaxed">{content}</p>
+        </div>
       </div>
     </article>
   );

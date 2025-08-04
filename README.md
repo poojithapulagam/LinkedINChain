@@ -1,34 +1,237 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ChatChain - Decentralized Social Media on Solana
 
-## Getting Started
+ChatChain is a decentralized social media platform built on the Solana blockchain, inspired by X (formerly Twitter). It allows users to create profiles, post messages, and interact with the community in a decentralized manner using Solana wallets.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- **Decentralized Social Media**: Built on Solana blockchain for true decentralization
+- **Wallet Integration**: Connect with any Solana wallet (Phantom, Solflare, etc.)
+- **Profile Management**: Create and manage your decentralized profile
+- **Post Creation**: Share messages up to 280 characters (like X)
+- **Real-time Feed**: View posts from the community with infinite scroll
+- **Pull-to-Refresh**: Modern mobile-friendly interaction
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Modern UI**: Clean, minimalist design with Tailwind CSS
+
+## 🏗️ Architecture
+
+### Frontend
+- **Framework**: Next.js 13 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Wallet Integration**: Solana Wallet Adapter
+- **State Management**: React Context API
+
+### Backend (Smart Contracts)
+- **Framework**: Anchor (Solana development framework)
+- **Language**: Rust
+- **Program ID**: `6KbiNqsptaEfvQKhCgh9q1Mv4jXm1G4tQSHbv5NqxWW4`
+
+## 📦 Project Structure
+
+```
+web-ao-space/
+├── app/                    # Next.js app directory
+│   ├── page.tsx           # Main homepage
+│   ├── layout.tsx         # Root layout
+│   ├── globals.css        # Global styles
+│   ├── posts/             # Posts pages
+│   ├── profile/           # Profile pages
+│   └── authors/           # Author pages
+├── components/            # React components
+│   ├── post-*.tsx         # Post-related components
+│   ├── profile-*.tsx      # Profile-related components
+│   ├── wallet.tsx         # Wallet connection
+│   └── ui/                # UI components
+├── hooks/                 # Custom React hooks
+│   ├── use-posts.ts       # Posts management
+│   ├── use-profile.ts     # Profile management
+│   └── use-workspace.ts   # Solana workspace
+├── context/               # React context providers
+│   ├── posts.tsx          # Posts context
+│   ├── profile.tsx        # Profile context
+│   └── solana.tsx         # Solana context
+├── lib/                   # Utility libraries
+├── solana-x/              # Solana smart contracts
+│   ├── src/lib.rs         # Main program logic
+│   └── Cargo.toml         # Rust dependencies
+└── public/                # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js 18+ 
+- Yarn or npm
+- Solana CLI tools
+- Rust and Cargo
+- Anchor CLI
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd web-ao-space
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install frontend dependencies**
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Install Solana program dependencies**
+   ```bash
+   cd solana-x
+   cargo build
+   cd ..
+   ```
 
-## Deploy on Vercel
+4. **Set up environment variables**
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+   NEXT_PUBLIC_PROGRAM_ID=6KbiNqsptaEfvQKhCgh9q1Mv4jXm1G4tQSHbv5NqxWW4
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Start the development server**
+   ```bash
+   yarn dev
+   # or
+   npm run dev
+   ```
+
+2. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+3. **Connect your wallet**
+   - Install a Solana wallet (Phantom, Solflare, etc.)
+- Click "Connect Wallet" in the app
+- Approve the connection
+
+### Building for Production
+
+```bash
+yarn build
+yarn start
+```
+
+## 🔧 Smart Contract Development
+
+### Deploy the Solana Program
+
+1. **Build the program**
+   ```bash
+   cd solana-x
+   anchor build
+   ```
+
+2. **Deploy to devnet**
+   ```bash
+   anchor deploy --provider.cluster devnet
+   ```
+
+3. **Update program ID**
+   After deployment, update the program ID in:
+   - `solana-x/src/lib.rs` (declare_id! macro)
+   - Frontend environment variables
+
+### Program Features
+
+The Solana program includes two main instructions:
+
+- **create_profile**: Creates a user profile with a name (max 50 characters)
+- **send_post**: Creates a new post with content (max 280 characters)
+
+## 🎨 UI Components
+
+The application includes several reusable components:
+
+- **PostCard**: Displays individual posts
+- **PostForm**: Form for creating new posts
+- **ProfileForm**: Form for creating/editing profiles
+- **Wallet**: Wallet connection component
+- **PullToRefresh**: Mobile-friendly refresh functionality
+- **ScrollToTop**: Navigation helper
+
+## 🔌 Wallet Integration
+
+ChatChain supports all major Solana wallets through the Solana Wallet Adapter:
+
+- Phantom
+- Solflare
+- Slope
+- Sollet
+- And more...
+
+## 📱 Mobile Support
+
+The application is fully responsive and includes mobile-specific features:
+
+- Pull-to-refresh functionality
+- Touch-friendly interface
+- Responsive design
+- Mobile-optimized navigation
+
+## 🛠️ Development Scripts
+
+```bash
+# Development
+yarn dev          # Start development server
+yarn build        # Build for production
+yarn start        # Start production server
+yarn lint         # Run ESLint
+
+# Solana Program
+cd solana-x
+anchor build      # Build the program
+anchor test       # Run tests
+anchor deploy     # Deploy to network
+```
+
+## 🧪 Testing
+
+```bash
+# Frontend tests
+yarn test
+
+# Solana program tests
+cd solana-x
+anchor test
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+
+1. Check the [Issues](https://github.com/your-repo/issues) page
+2. Create a new issue with detailed information
+3. Join our community discussions
+
+## 🔗 Links
+
+- [Solana Documentation](https://docs.solana.com/)
+- [Anchor Framework](https://www.anchor-lang.com/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+Built with ❤️ on Solana

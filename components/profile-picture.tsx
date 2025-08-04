@@ -35,18 +35,24 @@ export default function ProfilePicture({
   }, [connection, publicKey]);
 
   if (loading) {
-    // You might want to render a loading spinner here
-    return <div className={`bg-gray-200 ${className}`} />;
+    return (
+      <div className={`bg-gray-200 animate-pulse rounded-full flex items-center justify-center ${className}`}>
+        <div className="w-1/2 h-1/2 bg-gray-300 rounded-full"></div>
+      </div>
+    );
   }
 
   if (!src) {
-    // You might want to render a default placeholder image here
-    return <div className={`bg-gray-200 ${className}`} />;
+    return (
+      <div className={`bg-gray-200 rounded-full flex items-center justify-center ${className}`}>
+        <div className="w-1/2 h-1/2 bg-gray-400 rounded-full"></div>
+      </div>
+    );
   }
 
   return (
     <Image
-      className={`rounded-full ${className}`}
+      className={`rounded-full object-cover ${className}`}
       alt="Profile Picture"
       src={src}
       height={40}

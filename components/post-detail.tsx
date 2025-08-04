@@ -33,8 +33,12 @@ export default function PostDetail({ publicKey }: PostDetailProps) {
   }, [workspace, publicKey]);
 
   if (!loaded) {
-    // TODO: Render spinner.
-    return null;
+    return (
+      <div className="card text-center py-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black mx-auto mb-4"></div>
+        <p className="text-gray-600 font-dm-sans">Loading post...</p>
+      </div>
+    );
   }
 
   if (!post) {
@@ -43,9 +47,9 @@ export default function PostDetail({ publicKey }: PostDetailProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+    <div className="space-y-6">
       <PostHeader />
-      <div className="bg-white rounded-md shadow-md p-4 mt-4">
+      <div className="card card-hover">
         <PostCard post={post} />
       </div>
     </div>

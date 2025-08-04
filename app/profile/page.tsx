@@ -10,17 +10,22 @@ export default function ProfilePage() {
   if (!publicKey) {
     // Handle the case when publicKey is null or undefined, e.g., redirect to login page
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-red-200 via-red-300 to-red-400">
-        {/* Adjust the background gradient and other styles based on your design */}
-        <p className="text-white">Loading Please Wait...</p>
+      <div className="w-full bg-white">
+        <div className="container-responsive py-8">
+          <div className="card text-center py-12">
+            <h2 className="text-xl font-lexend font-semibold text-black mb-4">Wallet Not Connected</h2>
+            <p className="text-gray-600 font-dm-sans">Please connect your wallet to view your profile.</p>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400">
-      {/* Adjust the background gradient and other styles based on your design */}
-      <ProfileDetail publicKey={publicKey} />
+    <div className="w-full bg-white">
+      <div className="container-responsive py-8">
+        <ProfileDetail publicKey={publicKey} />
+      </div>
     </div>
   );
 }

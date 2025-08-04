@@ -10,6 +10,7 @@ export interface TextFieldProps {
   className?: string;
   maxLength?: number;
   placeholder?: string;
+  id?: string;
 }
 
 export default function TextField({
@@ -20,7 +21,7 @@ export default function TextField({
     <input
       autoComplete="off"
       className={clsx(
-        'h-12 px-4 py-2 font-medium text-gray-800 border border-solid border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition-all duration-300',
+        'w-full h-12 px-4 py-3 font-dm-sans text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 placeholder-gray-500',
         className,
       )}
       type="text"

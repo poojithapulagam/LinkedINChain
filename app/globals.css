@@ -8,7 +8,53 @@
 
 /* Apply global styles to the body */
 body {
-  @apply h-screen overflow-hidden bg-neutral-50 font-sans text-neutral-950;
+  @apply bg-white font-sans text-black;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f3f4f6;
+}
+
+/* Apply custom scrollbar to body */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Mobile scrollbar adjustments for body */
+@media (max-width: 768px) {
+  body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}
+
+/* Font family utilities */
+.font-lexend {
+  font-family: var(--font-lexend-deca), sans-serif;
+}
+
+.font-dm-sans {
+  font-family: var(--font-dm-sans), sans-serif;
 }
 
 /**
@@ -18,36 +64,93 @@ body {
 /* Customize styles for the wallet adapter button */
 .wallet-adapter-button {
   @apply
-    font-sans-alt
+    font-dm-sans
     h-12
     cursor-pointer
-    rounded-none
-    border-none
-    bg-neutral-950
-    px-8
+    rounded-lg
+    border-2
+    border-black
+    bg-black
+    px-6
     font-semibold
     leading-none
     tracking-wide
-    text-neutral-50;
+    text-white
+    transition-all
+    duration-200;
+}
 
-  /* Add additional styles or override existing ones */
-  /* For example, you can add a hover effect */
-  &:hover {
-    @apply bg-neutral-800;
+.wallet-adapter-button:hover {
+  @apply bg-white text-black;
+}
+
+/* Custom button styles */
+.btn-twitter {
+  @apply px-4 py-2 bg-black text-white rounded-lg font-dm-sans font-medium transition-all duration-200 hover:bg-gray-800;
+}
+
+/* Responsive container styles */
+.container-responsive {
+  @apply w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white border border-gray-200 rounded-lg shadow-sm p-6;
+}
+
+.card-hover {
+  @apply hover:shadow-md transition-shadow duration-200;
+}
+
+/* Custom Scrollbar Styles for specific elements */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f3f4f6;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Mobile scrollbar adjustments */
+@media (max-width: 768px) {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
   }
 }
 
-
-.btn-twitter {
-  padding: 8px 16px;
-  background-color: #57d552; /* Twitter Blue */
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
-.btn-twitter:hover {
-  background-color: #57d552; /* Darker shade for hover effect */
+/* Ensure scrollbar doesn't cause layout shift */
+.scrollbar-thin {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
