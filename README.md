@@ -157,13 +157,6 @@ npm run build        # Build for production
 npm start        # Start production server
 npm lint         # Run ESLint
 
-
-
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🤝 Contributing
 
 1. Fork the repository
