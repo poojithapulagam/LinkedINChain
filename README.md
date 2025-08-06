@@ -1,6 +1,6 @@
-# ChatChain - Decentralized Social Media on Solana
+# LinkedINChain - Decentralized Social Media on Solana
 
-ChatChain is a decentralized social media platform built on the Solana blockchain, inspired by X (formerly Twitter). It allows users to create profiles, post messages, and interact with the community in a decentralized manner using Solana wallets.
+LinkedINChain is a decentralized social media platform built on the Solana blockchain, It allows users to create profiles, post messages, and interact with the community in a decentralized manner using Solana wallets.
 
 ## 🌟 Features
 
@@ -78,19 +78,10 @@ web-ao-space/
 
 2. **Install frontend dependencies**
    ```bash
-   yarn install
-   # or
    npm install
    ```
 
-3. **Install Solana program dependencies**
-   ```bash
-   cd solana-x
-   cargo build
-   cd ..
-   ```
-
-4. **Set up environment variables**
+3. **Set up environment variables**
    Create a `.env.local` file in the root directory:
    ```env
    NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
@@ -101,8 +92,6 @@ web-ao-space/
 
 1. **Start the development server**
    ```bash
-   yarn dev
-   # or
    npm run dev
    ```
 
@@ -117,29 +106,10 @@ web-ao-space/
 ### Building for Production
 
 ```bash
-yarn build
-yarn start
+npm run build
+npm run start
 ```
 
-## 🔧 Smart Contract Development
-
-### Deploy the Solana Program
-
-1. **Build the program**
-   ```bash
-   cd solana-x
-   anchor build
-   ```
-
-2. **Deploy to devnet**
-   ```bash
-   anchor deploy --provider.cluster devnet
-   ```
-
-3. **Update program ID**
-   After deployment, update the program ID in:
-   - `solana-x/src/lib.rs` (declare_id! macro)
-   - Frontend environment variables
 
 ### Program Features
 
@@ -161,7 +131,7 @@ The application includes several reusable components:
 
 ## 🔌 Wallet Integration
 
-ChatChain supports all major Solana wallets through the Solana Wallet Adapter:
+LinkedINChain supports all major Solana wallets through the Solana Wallet Adapter:
 
 - Phantom
 - Solflare
@@ -182,28 +152,13 @@ The application is fully responsive and includes mobile-specific features:
 
 ```bash
 # Development
-yarn dev          # Start development server
-yarn build        # Build for production
-yarn start        # Start production server
-yarn lint         # Run ESLint
+npm run dev          # Start development server
+npm run build        # Build for production
+npm start        # Start production server
+npm lint         # Run ESLint
 
-# Solana Program
-cd solana-x
-anchor build      # Build the program
-anchor test       # Run tests
-anchor deploy     # Deploy to network
-```
 
-## 🧪 Testing
 
-```bash
-# Frontend tests
-yarn test
-
-# Solana program tests
-cd solana-x
-anchor test
-```
 
 ## 📄 License
 
