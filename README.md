@@ -165,13 +165,6 @@ npm lint         # Run ESLint
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/your-repo/issues) page
-2. Create a new issue with detailed information
-3. Join our community discussions
 
 ## 🔗 Links
 
