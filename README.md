@@ -25,7 +25,7 @@ LinkedINChain is a decentralized social media platform built on the Solana block
 ### Backend (Smart Contracts)
 - **Framework**: Anchor (Solana development framework)
 - **Language**: Rust
-- **Program ID**: `6KbiNqsptaEfvQKhCgh9q1Mv4jXm1G4tQSHbv5NqxWW4`
+- **Program ID**: `DbcoQDkofHjxXSwivieFFYox8LFAnuuz3uaT5NNQZ5ga`
 
 ## 📦 Project Structure
 
@@ -85,7 +85,7 @@ web-ao-space/
    Create a `.env.local` file in the root directory:
    ```env
    NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
-   NEXT_PUBLIC_PROGRAM_ID=6KbiNqsptaEfvQKhCgh9q1Mv4jXm1G4tQSHbv5NqxWW4
+   NEXT_PUBLIC_PROGRAM_ID=DbcoQDkofHjxXSwivieFFYox8LFAnuuz3uaT5NNQZ5ga
    ```
 
 ### Development
